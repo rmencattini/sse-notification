@@ -17,10 +17,23 @@
 
 # Roadmap
 
-* create dummy FE
 * add keycloak authentication with two users
 * add multiple pages
 * add specific notification on click
 * add global notification on click
 * ensure requirements are met otherwise add more point in Roadmap.
 * Clean the readme
+
+# Run
+
+## Keycloak
+
+```bash
+docker run --name sse-keycloak -p 8080:8080 \
+    -e KEYCLOAK_ADMIN=admin -e KEYCLOAK_ADMIN_PASSWORD=admin \
+    -v ./sse-keycloak:/opt/keycloak/data/import \
+    quay.io/keycloak/keycloak:latest \
+    start-dev --import-realm \
+    --http-port 8080 \
+    --http-relative-path /auth
+```
